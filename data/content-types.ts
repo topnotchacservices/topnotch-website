@@ -11,7 +11,7 @@ export type EditableContent = {
   ctas: { primary: string; secondary: string };
   services: { title: string; tag: string; description: string; href: string; color: string }[];
   serviceAreas: ServiceArea[];
-  acHub: { heroTitle: string; heroDescription: string; problems: string[]; serviceCards: { title: string; description: string; href: string }[]; repairs: string[]; diagnostics: string[]; maintenance: string[]; installation: string[]; faqs: { question: string; answer: string }[] };
+  acHub: { heroTitle: string; heroDescription: string; heroVideo: string; heroPoster: string; problems: string[]; serviceCards: { title: string; description: string; href: string }[]; repairs: string[]; diagnostics: string[]; maintenance: string[]; installation: string[]; faqs: { question: string; answer: string }[] };
   acRepair: { heroTitle: string; heroDescription: string; symptoms: string[]; diagnostics: string[]; repairs: string[]; localMessage: string; faqs: { question: string; answer: string }[] };
   sections: { reviews: boolean; acServices: boolean; airDuct: boolean; dryerVent: boolean; family: boolean; areas: boolean };
 };

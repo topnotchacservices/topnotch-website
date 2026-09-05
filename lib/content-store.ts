@@ -27,6 +27,8 @@ export const defaultContent: EditableContent = {
   acHub: {
     heroTitle: "Professional AC Services in Pompano Beach, Fort Lauderdale & South Florida",
     heroDescription: "From emergency AC repair and system diagnostics to installation, replacement, maintenance and indoor comfort solutions, Top Notch AC Services provides dependable air conditioning service for homes, condos and businesses throughout South Florida.",
+    heroVideo: "/videos/ac-services-hero.mp4",
+    heroPoster: "/images/ac/ac-services-hero.png",
     problems: ["AC Not Cooling", "Warm Air From Vents", "AC Won't Turn On", "Weak Airflow", "Water Leaking From Air Handler", "Frozen Evaporator Coil", "AC Short Cycling", "Strange AC Noises", "Thermostat Problems", "High Energy Bills", "Outdoor Unit Not Running", "AC Running Constantly"],
     serviceCards: [
       { title: "AC Repair", description: "Professional diagnosis and repair for systems that are not cooling, failing to start, leaking, cycling improperly or experiencing electrical, refrigerant or airflow problems.", href: "/ac-repair" },
