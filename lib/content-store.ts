@@ -60,7 +60,7 @@ export const defaultContent: EditableContent = {
   acRepair: {
     heroTitle: "AC Repair in Pompano Beach, Fort Lauderdale & South Florida",
     heroDescription: "Is your AC not cooling, leaking water, making unusual noises, or refusing to turn on? Top Notch AC Services provides professional AC diagnostics and repair for homes, condos, and businesses throughout South Florida.",
-    heroImage: "/images/ac/ac-repair-hero.jpg",
+    heroImage: "/images/ac/ac-repair-hero.png",
     finalImage: "/images/about/branded-van.jpg",
     symptoms: ["AC Not Cooling", "AC Won't Turn On", "Weak Airflow", "Water Leaking", "Frozen Coil", "AC Short Cycling"],
     diagnostics: ["Thermostat", "Electrical components", "Capacitor", "Contactor", "Condenser fan motor", "Refrigerant pressures", "Evaporator coil", "Airflow", "Drain line"],
