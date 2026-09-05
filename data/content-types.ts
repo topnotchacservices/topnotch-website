@@ -10,6 +10,20 @@ export type EditableContent = {
   seo: { title: string; description: string };
   ctas: { primary: string; secondary: string };
   services: { title: string; tag: string; description: string; href: string; color: string }[];
-  serviceAreas: string[];
+  serviceAreas: ServiceArea[];
+  acRepair: { heroTitle: string; heroDescription: string; symptoms: string[]; diagnostics: string[]; repairs: string[]; localMessage: string; faqs: { question: string; answer: string }[] };
   sections: { reviews: boolean; acServices: boolean; airDuct: boolean; dryerVent: boolean; family: boolean; areas: boolean };
+};
+
+export type ServiceArea = {
+  name: string;
+  slug: string;
+  region: "North Broward" | "Central Broward" | "South Broward" | "Palm Beach County" | "Miami-Dade / Southern Service Area";
+  enabled: boolean;
+  cityTitle: string;
+  metaTitle: string;
+  metaDescription: string;
+  intro: string;
+  services: string[];
+  priority: boolean;
 };

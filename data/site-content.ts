@@ -28,7 +28,7 @@ export const navigation = [
 ] as const;
 
 export const homepageServices = [
-  { title: "AC Repair", tag: "DIAGNOSTICS & REPAIRS", href: "/ac-services", color: "from-sky-500 to-blue-800" },
+  { title: "AC Repair", tag: "DIAGNOSTICS & REPAIRS", href: "/ac-repair", color: "from-sky-500 to-blue-800" },
   { title: "AC Installation", tag: "REPLACEMENT & NEW SYSTEMS", href: "/ac-services", color: "from-blue-500 to-[#082544]" },
   { title: "AC Maintenance", tag: "TUNE-UPS & CARE", href: "/ac-maintenance", color: "from-cyan-500 to-blue-700" },
   { title: "Air Duct Cleaning", tag: "CLEANER INDOOR AIR", href: "/air-duct-cleaning", color: "from-sky-600 to-[#123f64]" },
