@@ -36,6 +36,9 @@ yarn-error.log*
 # locally persisted admin-managed website content
 /.topnotch-content/
 
+# locally uploaded admin media
+/public/uploads/
+
 # vercel
 .vercel
 
