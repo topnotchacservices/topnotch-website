@@ -1,0 +1,3 @@
+import { siteContent } from "@/data/site-content";
+import { ActionButton, PageHero, SiteFooter, SiteHeader } from "@/components/site-shell";
+export default function AboutPage() { return <><SiteHeader /><main><PageHero eyebrow="ABOUT TOP NOTCH" title="A local company built around family and community." description="Professional HVAC, air duct and dryer vent service with honest guidance and careful workmanship." /><section className="mx-auto max-w-3xl px-5 py-16 sm:px-8 sm:py-24"><blockquote className="border-l-4 border-sky-500 pl-6 font-serif text-2xl font-bold leading-snug text-[#082544]">&quot;{siteContent.familyMessage}&quot;</blockquote><div className="mt-8"><ActionButton>Book Service</ActionButton></div></section></main><SiteFooter /></>; }
