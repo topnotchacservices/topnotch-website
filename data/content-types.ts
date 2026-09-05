@@ -12,7 +12,7 @@ export type EditableContent = {
   services: { title: string; tag: string; description: string; href: string; color: string }[];
   serviceAreas: ServiceArea[];
   acHub: { heroTitle: string; heroDescription: string; heroVideo: string; heroPoster: string; heroMedia: { fit: "cover" | "contain"; position: "center" | "left" | "right"; autoplay: boolean; loop: boolean; controls: boolean }; problems: string[]; serviceCards: { title: string; description: string; href: string; image: string; active: boolean }[]; repairs: string[]; diagnostics: string[]; maintenance: string[]; installation: string[]; faqs: { question: string; answer: string }[] };
-  acRepair: { heroTitle: string; heroDescription: string; symptoms: string[]; diagnostics: string[]; repairs: string[]; localMessage: string; faqs: { question: string; answer: string }[] };
+  acRepair: { heroTitle: string; heroDescription: string; heroImage: string; finalImage: string; symptoms: string[]; diagnostics: string[]; repairs: string[]; localMessage: string; faqs: { question: string; answer: string }[] };
   sections: { reviews: boolean; acServices: boolean; airDuct: boolean; dryerVent: boolean; family: boolean; areas: boolean };
 };
 
