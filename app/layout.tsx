@@ -4,6 +4,8 @@ import { ContentProvider } from "@/components/content-provider";
 import { getSiteContent } from "@/lib/content-store";
 import "./globals.css";
 
+const productionUrl = "https://www.topnotchdryerventcleaning.com";
+
 export const dynamic = "force-dynamic";
 
 const geistSans = Geist({
@@ -18,7 +20,7 @@ const geistMono = Geist_Mono({
 
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getSiteContent();
-  return { title: content.seo.title, description: content.seo.description };
+  return { metadataBase: new URL(productionUrl), title: { default: content.seo.title, template: `%s | ${content.companyName}` }, description: content.seo.description, alternates: { canonical: "/" }, openGraph: { type: "website", siteName: content.companyName, title: content.seo.title, description: content.seo.description, url: productionUrl }, twitter: { card: "summary_large_image", title: content.seo.title, description: content.seo.description } };
 }
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
