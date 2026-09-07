@@ -31,7 +31,7 @@ export default function AboutPage() {
 		"@type": "LocalBusiness",
 		name: content.companyName,
 		telephone: content.phone,
-		url: "https://topnotch-acservices.com",
+		url: "https://www.topnotchdryerventcleaning.com",
 		identifier: `Florida HVAC License ${content.license}`,
 		description: "Family-owned, licensed and insured HVAC, indoor-air, air-duct, and dryer-vent service in Pompano Beach and South Florida.",
 		areaServed: ["Pompano Beach", "Fort Lauderdale", "South Florida"],
