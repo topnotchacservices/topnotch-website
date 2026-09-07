@@ -147,15 +147,15 @@ export default function ContactPage() {
       {
         "@type": "ContactPage",
         name: `Contact ${content.companyName}`,
-        url: "https://topnotch-acservices.com/contact",
+        url: "https://www.topnotchdryerventcleaning.com/contact",
       },
       {
         "@type": "LocalBusiness",
         name: content.companyName,
         telephone: content.phone,
         email: content.email,
-        url: "https://topnotch-acservices.com",
-        identifier: `Florida HVAC License ${content.license}`,
+        url: "https://www.topnotchdryerventcleaning.com",
+        identifier: `State Florida License ${content.license}`,
         areaServed: ["Pompano Beach", "Fort Lauderdale", "South Florida"],
       },
     ],
@@ -249,7 +249,7 @@ export default function ContactPage() {
                 Licensed & Insured
               </p>
               <p className="mt-1 text-sm text-slate-600">
-                Florida HVAC License {content.license}
+                State Florida License {content.license}
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
