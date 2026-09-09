@@ -28,12 +28,12 @@ export const navigation = [
 ] as const;
 
 export const homepageServices = [
-  { title: "AC Repair", tag: "DIAGNOSTICS & REPAIRS", href: "/ac-repair", image: "/images/home/ac-repair.jpg", color: "from-sky-500 to-blue-800" },
-  { title: "AC Installation", tag: "REPLACEMENT & NEW SYSTEMS", href: "/ac-services", image: "/images/home/ac-installation.jpg", color: "from-blue-500 to-[#082544]" },
-  { title: "AC Maintenance", tag: "TUNE-UPS & CARE", href: "/ac-maintenance", image: "/images/home/ac-maintenance.jpg", color: "from-cyan-500 to-blue-700" },
-  { title: "Air Duct Cleaning", tag: "CLEANER INDOOR AIR", href: "/air-duct-cleaning", image: "/images/home/air-duct-cleaning.jpg", color: "from-sky-600 to-[#123f64]" },
-  { title: "Dryer Vent Cleaning", tag: "SAFETY & AIRFLOW", href: "/dryer-vent-cleaning", image: "/images/home/dryer-vent-cleaning.jpg", color: "from-blue-700 to-[#061c32]" },
-  { title: "Duct Repair & Installation", tag: "AIRFLOW SOLUTIONS", href: "/ac-services", image: "/images/home/duct-repair.jpg", color: "from-[#176e9b] to-[#082544]" },
+  { title: "AC Repair", tag: "DIAGNOSTICS & REPAIRS", href: "/ac-repair", image: "/images/home/ac-repair.svg", color: "from-sky-500 to-blue-800" },
+  { title: "AC Installation", tag: "REPLACEMENT & NEW SYSTEMS", href: "/ac-services", image: "/images/home/ac-installation.svg", color: "from-blue-500 to-[#082544]" },
+  { title: "AC Maintenance", tag: "TUNE-UPS & CARE", href: "/ac-maintenance", image: "/images/home/ac-maintenance.svg", color: "from-cyan-500 to-blue-700" },
+  { title: "Air Duct Cleaning", tag: "CLEANER INDOOR AIR", href: "/air-duct-cleaning", image: "/images/home/air-duct-cleaning.svg", color: "from-sky-600 to-[#123f64]" },
+  { title: "Dryer Vent Cleaning", tag: "SAFETY & AIRFLOW", href: "/dryer-vent-cleaning", image: "/images/home/dryer-vent-cleaning.svg", color: "from-blue-700 to-[#061c32]" },
+  { title: "Duct Repair & Installation", tag: "AIRFLOW SOLUTIONS", href: "/ac-services", image: "/images/home/duct-repair.svg", color: "from-[#176e9b] to-[#082544]" },
 ] as const;
 
 export const serviceAreas = ["Pompano Beach", "Fort Lauderdale", "Deerfield Beach", "Coconut Creek", "Coral Springs", "Margate", "Oakland Park", "Boca Raton", "Tamarac", "Plantation", "Hollywood", "Parkland"] as const;
