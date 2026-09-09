@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { useSiteContent } from "@/components/content-provider";
 import { ActionButton, SiteFooter, SiteHeader } from "@/components/site-shell";
