@@ -48,7 +48,7 @@ function HeroImage() {
     <div className="relative min-h-[390px] overflow-hidden bg-gradient-to-br from-[#0b4f7d] via-[#0878b6] to-[#082544] lg:min-h-full">
       {!failed ? (
         <Image
-          src="/images/air-duct/air-duct-cleaning-hero.jpg"
+          src="/images/home/air-duct-cleaning.svg"
           alt="Top Notch AC Services air duct cleaning service in South Florida"
           fill
           priority
