@@ -4,7 +4,7 @@ export const siteContent = {
   phoneHref: "tel:7543660055",
   license: "CAC1824888",
   domain: "topnotchdryerventcleaning.com",
-  email: "[EMAIL]",
+  email: "topnotch.acservices@gmail.com",
   hero: {
     eyebrow: "SOUTH FLORIDA COMFORT SPECIALISTS",
     headline: "South Florida AC, Air Duct & Dryer Vent Experts",
