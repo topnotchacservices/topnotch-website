@@ -33,8 +33,8 @@ function InstallationHeroImage() {
   return (
     <div className="relative min-h-[360px] overflow-hidden bg-[#082544] lg:min-h-full">
       <Image
-        src="/images/home/ac-installation.svg"
-        alt="Top Notch AC Services air conditioning installation service in South Florida"
+        src="/images/ac/ac-installation-hero.jpg"
+        alt="Professional AC installation at a South Florida home"
         fill
         priority
         sizes="(min-width: 1024px) 50vw, 100vw"
