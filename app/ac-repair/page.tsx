@@ -8,12 +8,12 @@ import { ActionButton, SiteFooter, SiteHeader } from "@/components/site-shell";
 
 const problemStyles = ["thermo", "power", "air", "drop", "snow", "cycle"];
 const problemImages = [
-  "/images/home/ac-repair.svg",
-  "/images/home/ac-system-service.svg",
-  "/images/home/duct-repair.svg",
-  "/images/home/ac-maintenance.svg",
-  "/images/home/ac-repair.svg",
-  "/images/home/ac-system-service.svg",
+  "/images/ac/problems/ac-not-cooling.jpg",
+  "/images/ac/problems/ac-wont-turn-on.jpg",
+  "/images/ac/problems/weak-airflow.jpg",
+  "/images/ac/problems/water-leaking.jpg",
+  "/images/ac/problems/frozen-coil.jpg",
+  "/images/ac/problems/ac-short-cycling.jpg",
 ];
 const strengths = ["Family-Owned & Operated", "Licensed & Insured", "Honest Recommendations", "Professional Workmanship", "Residential & Commercial Service", "Local South Florida Company"];
 const mainAreas = ["Pompano Beach", "Fort Lauderdale", "Deerfield Beach", "Coconut Creek", "Coral Springs", "Boca Raton", "Margate", "Oakland Park"];
@@ -42,7 +42,7 @@ function ProblemCardMedia({ src, title, kind }: { src: string; title: string; ki
   const [failed, setFailed] = useState(false);
   return (
     <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-b from-white to-sky-50">
-      {!failed && <Image src={src} alt={`${title} HVAC problem illustration`} fill sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" onError={() => setFailed(true)} className="object-contain p-5 transition duration-300 group-hover:scale-[1.03]" />}
+      {!failed && <Image src={src} alt={`${title} air conditioning repair issue`} fill sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" onError={() => setFailed(true)} className="object-cover transition duration-300 group-hover:scale-[1.03]" />}
       {failed && <div className="absolute inset-0 grid place-items-center"><Icon kind={kind} large /></div>}
     </div>
   );
