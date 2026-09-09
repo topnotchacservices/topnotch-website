@@ -60,7 +60,7 @@ function InstallationHeroImage() {
         fill
         priority
         sizes="(min-width: 1024px) 50vw, 100vw"
-        className="object-cover object-center"
+        className="object-contain object-center"
       />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#061c32]/30 via-transparent to-transparent" />
     </div>
