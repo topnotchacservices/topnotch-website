@@ -166,7 +166,13 @@ export async function POST(request: Request) {
       message: contact.message,
       consent: contact.consent,
     });
-  if (databaseError)
+  if (databaseError) {
+    console.error("Supabase contact_leads insert failed", {
+      code: databaseError.code,
+      message: databaseError.message,
+      details: databaseError.details,
+      hint: databaseError.hint,
+    });
     return NextResponse.json(
       {
         error:
@@ -174,6 +180,7 @@ export async function POST(request: Request) {
       },
       { status: 502 },
     );
+  }
   const { error: emailError } = await new Resend(
     process.env.RESEND_API_KEY!,
   ).emails.send({
