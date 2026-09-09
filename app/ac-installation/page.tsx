@@ -5,10 +5,30 @@ import { useSiteContent } from "@/components/content-provider";
 import { ActionButton, SiteFooter, SiteHeader } from "@/components/site-shell";
 
 const installationOptions = [
-  ["Central AC Systems", "Professional installation of matched indoor and outdoor central air conditioning equipment."],
-  ["Heat Pump Systems", "Efficient cooling and heating solutions for compatible South Florida homes and properties."],
-  ["Air Handler Installation", "Indoor equipment installation with attention to airflow, drainage, electrical, and access."],
-  ["Ductless Mini-Splits", "Flexible comfort for additions, rooms, garages, offices, and spaces without traditional ductwork."],
+  {
+    title: "Central AC Systems",
+    description: "Professional installation of matched indoor and outdoor central air conditioning equipment.",
+    image: "/images/ac/installation-options/central-ac-systems.jpg",
+    alt: "Central air conditioning system with indoor air handler and outdoor condenser",
+  },
+  {
+    title: "Heat Pump Systems",
+    description: "Efficient cooling and heating solutions for compatible South Florida homes and properties.",
+    image: "/images/ac/installation-options/heat-pump-systems.jpg",
+    alt: "Heat pump air conditioning system",
+  },
+  {
+    title: "Air Handler Installation",
+    description: "Indoor equipment installation with attention to airflow, drainage, electrical, and access.",
+    image: "/images/ac/installation-options/air-handler-installation.jpg",
+    alt: "Installed indoor air handler system",
+  },
+  {
+    title: "Ductless Mini-Splits",
+    description: "Flexible comfort for additions, rooms, garages, offices, and spaces without traditional ductwork.",
+    image: "/images/ac/installation-options/ductless-mini-split.jpg",
+    alt: "Ductless mini-split system diagram",
+  },
 ];
 
 const processSteps = [
@@ -89,11 +109,16 @@ export default function AcInstallationPage() {
             <p className="mt-3 leading-7 text-slate-600">The right installation depends on the property, existing equipment, airflow, electrical requirements, and comfort needs.</p>
           </div>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {installationOptions.map(([title, description]) => (
-              <article key={title} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <span className="grid size-10 place-items-center rounded-full bg-sky-50 text-lg font-black text-blue-700">+</span>
-                <h3 className="mt-4 text-lg font-black text-[#082544]">{title}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-600">{description}</p>
+            {installationOptions.map(({ title, description, image, alt }) => (
+              <article key={title} className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+                <div className="relative h-44 bg-slate-50">
+                  <Image src={image} alt={alt} fill sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" className="object-contain p-3" />
+                </div>
+                <div className="p-6">
+                  <span className="grid size-10 place-items-center rounded-full bg-sky-50 text-lg font-black text-blue-700">+</span>
+                  <h3 className="mt-4 text-lg font-black text-[#082544]">{title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-slate-600">{description}</p>
+                </div>
               </article>
             ))}
           </div>
