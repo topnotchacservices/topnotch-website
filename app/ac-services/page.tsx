@@ -8,7 +8,8 @@ import { ActionButton, SiteFooter, SiteHeader } from "@/components/site-shell";
 import { Eyebrow, SectionTitle, VisualImage } from "@/components/home-sections";
 
 const trust = ["Family-Owned & Operated", "Licensed & Insured", "Same-Day Service Available", "Residential & Commercial", "Professional HVAC Service", "South Florida Local Service"];
-const strengths = ["Family-Owned & Operated", "Licensed & Insured", "Honest Recommendations", "Clear Communication", "Professional Workmanship", "Respect for Your Property", "Residential & Commercial Service", "Local South Florida Company"];\nconst serviceImageByTitle: Record<string, string> = {
+const strengths = ["Family-Owned & Operated", "Licensed & Insured", "Honest Recommendations", "Clear Communication", "Professional Workmanship", "Respect for Your Property", "Residential & Commercial Service", "Local South Florida Company"];
+const serviceImageByTitle: Record<string, string> = {
   "AC Repair": "/images/home/ac-repair.svg",
   "AC Installation": "/images/home/ac-installation.svg",
   "AC Maintenance": "/images/home/ac-maintenance.svg",
