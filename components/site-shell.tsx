@@ -14,7 +14,7 @@ export function ActionButton({ children, href = "/book-service", phone = false, 
 function Brand({ light = false }: { light?: boolean }) {
   const content = useSiteContent();
   const [logoFailed, setLogoFailed] = useState(false);
-  return <Link href="/" className="flex items-center gap-2.5" aria-label={`${content.companyName} home`}>{!logoFailed && <Image src="/images/brand/logo.png" alt={content.companyName} width={180} height={70} priority onError={() => setLogoFailed(true)} className="h-11 w-auto object-contain" />}<span className={`${logoFailed ? "flex" : "hidden"} items-center gap-2.5`}><span className="grid size-10 place-items-center rounded-full bg-sky-500 text-sm font-black text-white">TN</span><span className={`text-base font-black leading-none ${light ? "text-white" : "text-[#082544]"}`}>TOP NOTCH<span className={`mt-1 block text-[9px] tracking-[.22em] ${light ? "text-sky-200" : "text-sky-700"}`}>AC SERVICES</span></span></span></Link>;
+  return <Link href="/" className="flex items-center gap-2.5" aria-label={`${content.companyName} home`}>{!logoFailed && <Image src="/images/brand/logo.png" alt={content.companyName} width={180} height={70} priority onError={() => setLogoFailed(true)} className="h-11 w-auto object-contain" />}<span className={`${logoFailed ? "flex" : "hidden"} items-center gap-2.5`}><span className="grid size-10 place-items-center rounded-full bg-sky-500 text-sm font-black text-white">TN</span><span className={`text-base font-black leading-none ${light ? "text-white" : "text-[#082544]"}`}>TOP NOTCH<span className={`mt-1 block text-[9px] tracking-[.18em] ${light ? "text-sky-200" : "text-sky-700"}`}>DRYER VENT CLEANING</span></span></span></Link>;
 }
 
 export function SiteHeader() {
@@ -31,7 +31,7 @@ export function SiteFooter() {
     { src: "/images/footer/trust/nadca.jpg", alt: "National Air Duct Cleaners Association logo" },
     { src: "/images/footer/trust/bbb-rating.jpg", alt: "Better Business Bureau rating badge" },
     { src: "/images/footer/trust/google-reviews.jpg", alt: "Google reviews badge" },
-    { src: "/images/footer/trust/instagram.jpg", alt: "Top Notch AC Services on Instagram" },
+    { src: "/images/footer/trust/instagram.jpg", alt: "Top Notch Dryer Vent Cleaning Inc on Instagram" },
   ];
   const paymentMethods = [
     { src: "/images/footer/payments/visa.png", alt: "Visa accepted" },
@@ -69,7 +69,7 @@ export function SiteFooter() {
           {trustLogos.map((logo) => <div key={logo.src} className="flex h-24 items-center justify-center rounded-xl border border-white/15 bg-white p-3 shadow-lg sm:h-28 sm:p-4"><Image src={logo.src} alt={logo.alt} width={300} height={160} className="max-h-full w-auto max-w-full object-contain" /></div>)}
         </div>
       </section>
-      <div className="flex flex-col gap-3 pt-6 text-xs text-sky-200 sm:flex-row sm:items-center sm:justify-between"><span>© {new Date().getFullYear()} Top Notch AC Services. All rights reserved.</span><span>Family-Owned & Operated · Faith · Family · Community</span></div>
+      <div className="flex flex-col gap-3 pt-6 text-xs text-sky-200 sm:flex-row sm:items-center sm:justify-between"><span>© {new Date().getFullYear()} {content.companyName}. All rights reserved.</span><span>Family-Owned & Operated · Faith · Family · Community</span></div>
     </div>
   </footer>;
 }
