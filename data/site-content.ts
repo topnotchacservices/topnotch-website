@@ -1,5 +1,5 @@
 export const siteContent = {
-  companyName: "Top Notch AC Services",
+  companyName: "Top Notch Dryer Vent Cleaning Inc",
   phone: "954-590-8028",
   phoneHref: "tel:9545908028",
   license: "CAC1824888",
