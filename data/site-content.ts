@@ -1,10 +1,10 @@
 export const siteContent = {
-  companyName: "Top Notch AC Services",
-  phone: "754-366-0055",
-  phoneHref: "tel:7543660055",
+  companyName: "Top Notch Dryer Vent Cleaning Inc",
+  phone: "954-590-8028",
+  phoneHref: "tel:9545908028",
   license: "CAC1824888",
   domain: "topnotchdryerventcleaning.com",
-  email: "[EMAIL]",
+  email: "topnotch.acservices@gmail.com",
   hero: {
     eyebrow: "SOUTH FLORIDA COMFORT SPECIALISTS",
     headline: "South Florida AC, Air Duct & Dryer Vent Experts",

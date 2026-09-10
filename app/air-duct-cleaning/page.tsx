@@ -7,19 +7,19 @@ import { useSiteContent } from "@/components/content-provider";
 import { ActionButton, SiteFooter, SiteHeader } from "@/components/site-shell";
 
 const reasons = [
-  ["Dust & debris buildup", "Visible dust around supply vents or debris inside accessible ductwork may be a sign that the system should be inspected."],
-  ["Musty or stale odors", "Persistent odors when the HVAC system runs can be related to buildup, moisture, filters, coils, drain issues, or duct conditions."],
-  ["Recent renovation", "Construction and remodeling can introduce fine dust into the return and supply system if the HVAC equipment is operating during the work."],
-  ["Reduced airflow", "Airflow problems can have several causes, including dirty components, restrictions, duct issues, or equipment problems. We inspect before recommending a solution."],
+  ["Dust & debris buildup", "Visible dust around supply vents or debris inside accessible ductwork may be a sign that the system should be inspected.", "/images/duct/reasons/dust-debris.jpg"],
+  ["Musty or stale odors", "Persistent odors when the HVAC system runs can be related to buildup, moisture, filters, coils, drain issues, or duct conditions.", "/images/duct/reasons/musty-odors.jpg"],
+  ["Recent renovation", "Construction and remodeling can introduce fine dust into the return and supply system if the HVAC equipment is operating during the work.", "/images/duct/reasons/recent-renovation.jpg"],
+  ["Reduced airflow", "Airflow problems can have several causes, including dirty components, restrictions, duct issues, or equipment problems. We inspect before recommending a solution.", "/images/duct/reasons/reduced-airflow.jpg"],
 ];
 
 const process = [
-  ["1", "Protect the work area", "We prepare the area around vents and registers and protect nearby surfaces before cleaning begins."],
-  ["2", "Remove & inspect registers", "Accessible supply and return grilles are removed so the duct openings and visible conditions can be inspected."],
-  ["3", "Create negative pressure", "A professional vacuum system is connected to help pull loosened dust and debris toward the collection equipment."],
-  ["4", "Clean each duct run", "Each accessible vent line is cleaned individually using professional agitation tools such as Rotobrush equipment when appropriate."],
-  ["5", "Clean registers & returns", "Registers, return openings, and accessible connection areas are cleaned before the system is reassembled."],
-  ["6", "Final review", "We reinstall the grilles, clean the work area, and review the service with you before completion."],
+  ["1", "Protect the work area", "We prepare the area around vents and registers and protect nearby surfaces before cleaning begins.", "/images/duct/process/protect-work-area.jpg"],
+  ["2", "Remove & inspect registers", "Accessible supply and return grilles are removed so the duct openings and visible conditions can be inspected.", "/images/duct/process/remove-inspect-registers.jpg"],
+  ["3", "Create negative pressure", "A professional vacuum system is connected to help pull loosened dust and debris toward the collection equipment.", "/images/duct/process/create-negative-pressure.jpg"],
+  ["4", "Clean each duct run", "Each accessible vent line is cleaned individually using professional agitation tools such as Rotobrush equipment when appropriate.", "/images/duct/process/clean-each-duct-run.jpg"],
+  ["5", "Clean registers & returns", "Registers, return openings, and accessible connection areas are cleaned before the system is reassembled.", "/images/duct/process/clean-registers-returns.jpg"],
+  ["6", "Final review", "We reinstall the grilles, clean the work area, and review the service with you before completion.", "/images/duct/process/final-review.jpg"],
 ];
 
 const services = [
@@ -36,9 +36,9 @@ const services = [
 ];
 
 const properties = [
-  ["Homes", "Professional duct cleaning for single-family homes and residential HVAC systems."],
-  ["Condos", "Careful service for condominium duct systems, accessible returns, vents, and air-handling equipment."],
-  ["Businesses", "Air duct cleaning for offices, retail spaces, property managers, and other commercial properties."],
+  ["Homes", "Professional duct cleaning for single-family homes and residential HVAC systems.", "/images/duct/properties/homes.jpg"],
+  ["Condos", "Careful service for condominium duct systems, accessible returns, vents, and air-handling equipment.", "/images/duct/properties/condos.jpg"],
+  ["Businesses", "Air duct cleaning for offices, retail spaces, property managers, and other commercial properties.", "/images/duct/properties/businesses.jpg"],
 ];
 
 function HeroImage() {
@@ -48,13 +48,13 @@ function HeroImage() {
     <div className="relative min-h-[390px] overflow-hidden bg-gradient-to-br from-[#0b4f7d] via-[#0878b6] to-[#082544] lg:min-h-full">
       {!failed ? (
         <Image
-          src="/images/home/air-duct-cleaning.svg"
-          alt="Top Notch AC Services air duct cleaning service in South Florida"
+          src="/images/duct/air-duct-cleaning-hero.jpg"
+          alt="Professional air duct cleaning equipment and clean ductwork"
           fill
           priority
           sizes="(min-width: 1024px) 52vw, 100vw"
           onError={() => setFailed(true)}
-          className="object-cover object-center"
+          className="object-contain object-center"
         />
       ) : (
         <div className="absolute inset-0 flex items-center justify-center p-10 text-center text-white">
@@ -122,11 +122,10 @@ export default function AirDuctCleaningPage() {
             </p>
           </div>
           <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {reasons.map(([title, text]) => (
-              <article key={title} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <span className="grid size-10 place-items-center rounded-full bg-sky-50 text-lg font-black text-sky-700">+</span>
-                <h3 className="mt-4 text-lg font-black text-[#082544]">{title}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-600">{text}</p>
+            {reasons.map(([title, text, image]) => (
+              <article key={title} className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+                <div className="relative h-44 bg-slate-50"><Image src={image} alt={title} fill sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" className="object-cover" /></div>
+                <div className="p-6"><span className="grid size-10 place-items-center rounded-full bg-sky-50 text-lg font-black text-sky-700">+</span><h3 className="mt-4 text-lg font-black text-[#082544]">{title}</h3><p className="mt-2 text-sm leading-6 text-slate-600">{text}</p></div>
               </article>
             ))}
           </div>
@@ -142,11 +141,10 @@ export default function AirDuctCleaningPage() {
               </p>
             </div>
             <div className="mt-9 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {process.map(([number, title, text]) => (
-                <article key={number} className="rounded-2xl border border-white/15 bg-white/8 p-6">
-                  <span className="grid size-11 place-items-center rounded-full bg-sky-400 text-sm font-black text-[#082544]">{number}</span>
-                  <h3 className="mt-4 text-lg font-black">{title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-sky-100">{text}</p>
+              {process.map(([number, title, text, image]) => (
+                <article key={number} className="overflow-hidden rounded-2xl border border-white/15 bg-white/8">
+                  <div className="relative h-44"><Image src={image} alt={title} fill sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" className="object-contain object-center p-2" /></div>
+                  <div className="p-6"><span className="grid size-11 place-items-center rounded-full bg-sky-400 text-sm font-black text-[#082544]">{number}</span><h3 className="mt-4 text-lg font-black">{title}</h3><p className="mt-2 text-sm leading-6 text-sky-100">{text}</p></div>
                 </article>
               ))}
             </div>
@@ -181,11 +179,8 @@ export default function AirDuctCleaningPage() {
               <h2 className="mt-2 text-3xl font-black text-[#082544]">Air duct cleaning for South Florida properties</h2>
             </div>
             <div className="mt-8 grid gap-4 md:grid-cols-3">
-              {properties.map(([title, text]) => (
-                <article key={title} className="rounded-2xl border border-sky-100 bg-white p-7 shadow-sm">
-                  <h3 className="text-xl font-black text-[#082544]">{title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-slate-600">{text}</p>
-                </article>
+              {properties.map(([title, text, image]) => (
+                <article key={title} className="overflow-hidden rounded-2xl border border-sky-100 bg-white shadow-sm"><div className="relative h-48"><Image src={image} alt={title} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover" /></div><div className="p-7"><h3 className="text-xl font-black text-[#082544]">{title}</h3><p className="mt-3 text-sm leading-6 text-slate-600">{text}</p></div></article>
               ))}
             </div>
           </div>

@@ -280,7 +280,7 @@ export default function ContactPage() {
             </p>
             <form className="mt-7 grid gap-4 sm:grid-cols-2" onSubmit={submit}>
               <label className="text-sm font-bold text-[#082544]">
-                First Name
+                First Name <span className="text-red-600" aria-hidden="true">*</span>
                 <input
                   required
                   value={form.firstName}
@@ -290,7 +290,7 @@ export default function ContactPage() {
                 />
               </label>
               <label className="text-sm font-bold text-[#082544]">
-                Last Name
+                Last Name <span className="text-red-600" aria-hidden="true">*</span>
                 <input
                   required
                   value={form.lastName}
@@ -300,7 +300,7 @@ export default function ContactPage() {
                 />
               </label>
               <label className="text-sm font-bold text-[#082544]">
-                Phone Number
+                Phone Number <span className="text-red-600" aria-hidden="true">*</span>
                 <input
                   required
                   type="tel"
@@ -311,7 +311,7 @@ export default function ContactPage() {
                 />
               </label>
               <label className="text-sm font-bold text-[#082544]">
-                Email Address
+                Email Address <span className="text-red-600" aria-hidden="true">*</span>
                 <input
                   required
                   type="email"
@@ -322,7 +322,7 @@ export default function ContactPage() {
                 />
               </label>
               <label className="text-sm font-bold text-[#082544] sm:col-span-2">
-                Service Address
+                Service Address <span className="text-red-600" aria-hidden="true">*</span>
                 <input
                   required
                   value={form.address}
@@ -332,7 +332,7 @@ export default function ContactPage() {
                 />
               </label>
               <label className="text-sm font-bold text-[#082544]">
-                City
+                City <span className="text-red-600" aria-hidden="true">*</span>
                 <input
                   required
                   value={form.city}
