@@ -14,12 +14,12 @@ const reasons = [
 ];
 
 const process = [
-  ["1", "Protect the work area", "We prepare the area around vents and registers and protect nearby surfaces before cleaning begins."],
-  ["2", "Remove & inspect registers", "Accessible supply and return grilles are removed so the duct openings and visible conditions can be inspected."],
-  ["3", "Create negative pressure", "A professional vacuum system is connected to help pull loosened dust and debris toward the collection equipment."],
-  ["4", "Clean each duct run", "Each accessible vent line is cleaned individually using professional agitation tools such as Rotobrush equipment when appropriate."],
-  ["5", "Clean registers & returns", "Registers, return openings, and accessible connection areas are cleaned before the system is reassembled."],
-  ["6", "Final review", "We reinstall the grilles, clean the work area, and review the service with you before completion."],
+  ["1", "Protect the work area", "We prepare the area around vents and registers and protect nearby surfaces before cleaning begins.", "/images/duct/process/protect-work-area.jpg"],
+  ["2", "Remove & inspect registers", "Accessible supply and return grilles are removed so the duct openings and visible conditions can be inspected.", "/images/duct/process/remove-inspect-registers.jpg"],
+  ["3", "Create negative pressure", "A professional vacuum system is connected to help pull loosened dust and debris toward the collection equipment.", "/images/duct/process/create-negative-pressure.jpg"],
+  ["4", "Clean each duct run", "Each accessible vent line is cleaned individually using professional agitation tools such as Rotobrush equipment when appropriate.", "/images/duct/process/clean-each-duct-run.jpg"],
+  ["5", "Clean registers & returns", "Registers, return openings, and accessible connection areas are cleaned before the system is reassembled.", "/images/duct/process/clean-registers-returns.jpg"],
+  ["6", "Final review", "We reinstall the grilles, clean the work area, and review the service with you before completion.", "/images/duct/process/final-review.jpg"],
 ];
 
 const services = [
@@ -141,11 +141,10 @@ export default function AirDuctCleaningPage() {
               </p>
             </div>
             <div className="mt-9 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {process.map(([number, title, text]) => (
-                <article key={number} className="rounded-2xl border border-white/15 bg-white/8 p-6">
-                  <span className="grid size-11 place-items-center rounded-full bg-sky-400 text-sm font-black text-[#082544]">{number}</span>
-                  <h3 className="mt-4 text-lg font-black">{title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-sky-100">{text}</p>
+              {process.map(([number, title, text, image]) => (
+                <article key={number} className="overflow-hidden rounded-2xl border border-white/15 bg-white/8">
+                  <div className="relative h-44"><Image src={image} alt={title} fill sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" className="object-cover" /></div>
+                  <div className="p-6"><span className="grid size-11 place-items-center rounded-full bg-sky-400 text-sm font-black text-[#082544]">{number}</span><h3 className="mt-4 text-lg font-black">{title}</h3><p className="mt-2 text-sm leading-6 text-sky-100">{text}</p></div>
                 </article>
               ))}
             </div>
