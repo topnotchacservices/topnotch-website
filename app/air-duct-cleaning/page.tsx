@@ -36,9 +36,9 @@ const services = [
 ];
 
 const properties = [
-  ["Homes", "Professional duct cleaning for single-family homes and residential HVAC systems."],
-  ["Condos", "Careful service for condominium duct systems, accessible returns, vents, and air-handling equipment."],
-  ["Businesses", "Air duct cleaning for offices, retail spaces, property managers, and other commercial properties."],
+  ["Homes", "Professional duct cleaning for single-family homes and residential HVAC systems.", "/images/duct/properties/homes.jpg"],
+  ["Condos", "Careful service for condominium duct systems, accessible returns, vents, and air-handling equipment.", "/images/duct/properties/condos.jpg"],
+  ["Businesses", "Air duct cleaning for offices, retail spaces, property managers, and other commercial properties.", "/images/duct/properties/businesses.jpg"],
 ];
 
 function HeroImage() {
@@ -179,11 +179,8 @@ export default function AirDuctCleaningPage() {
               <h2 className="mt-2 text-3xl font-black text-[#082544]">Air duct cleaning for South Florida properties</h2>
             </div>
             <div className="mt-8 grid gap-4 md:grid-cols-3">
-              {properties.map(([title, text]) => (
-                <article key={title} className="rounded-2xl border border-sky-100 bg-white p-7 shadow-sm">
-                  <h3 className="text-xl font-black text-[#082544]">{title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-slate-600">{text}</p>
-                </article>
+              {properties.map(([title, text, image]) => (
+                <article key={title} className="overflow-hidden rounded-2xl border border-sky-100 bg-white shadow-sm"><div className="relative h-48"><Image src={image} alt={title} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover" /></div><div className="p-7"><h3 className="text-xl font-black text-[#082544]">{title}</h3><p className="mt-3 text-sm leading-6 text-slate-600">{text}</p></div></article>
               ))}
             </div>
           </div>
