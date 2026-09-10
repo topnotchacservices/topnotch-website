@@ -20,7 +20,7 @@ export const defaultContent: EditableContent = {
   hero: siteContent.hero,
   familyMessage: siteContent.familyMessage,
   socialLinks: siteContent.socialLinks,
-  seo: { title: "Top Notch AC Services | South Florida HVAC Experts", description: "AC, air duct and dryer vent services for South Florida homes and businesses." },
+  seo: { title: "Top Notch Dryer Vent Cleaning Inc | South Florida Dryer Vent Experts", description: "Dryer vent, air duct, and AC services for South Florida homes and businesses." },
   ctas: { primary: "Call Now", secondary: "Book Service" },
   services: homepageServices.map((service) => ({ ...service, description: "Professional service from a local South Florida team." })),
   serviceAreas: defaultServiceAreas,
