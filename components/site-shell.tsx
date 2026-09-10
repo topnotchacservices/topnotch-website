@@ -27,7 +27,51 @@ export function SiteHeader() {
 
 export function SiteFooter() {
   const content = useSiteContent();
-  return <footer className="relative isolate overflow-hidden bg-[#061c32] text-sky-100"><div className="absolute inset-0 -z-20 bg-[url('/images/footer/south-florida-hvac-footer.jpg')] bg-cover bg-center" aria-hidden="true" /><div className="absolute inset-0 -z-10 bg-[#061c32]/85" aria-hidden="true" /><div className="relative mx-auto max-w-7xl px-5 py-14 sm:px-8"><div className="grid gap-10 border-b border-sky-100/25 pb-10 sm:grid-cols-2 lg:grid-cols-[1.25fr_.8fr_.8fr_1.15fr]"><div><Brand light /><p className="mt-5 max-w-sm text-sm leading-6 text-sky-100">Professional AC repair, installation, maintenance, air duct cleaning and dryer vent service throughout South Florida.</p><p className="mt-4 text-xs font-bold tracking-wide text-sky-200">LICENSED & INSURED · FLORIDA HVAC LICENSE {content.license}</p></div><div><h2 className="text-sm font-extrabold uppercase tracking-[.14em] text-white">Services</h2><div className="mt-4 grid gap-2 text-sm"><Link className="hover:text-white" href="/ac-services">AC Services</Link><Link className="hover:text-white" href="/air-duct-cleaning">Air Duct Cleaning</Link><Link className="hover:text-white" href="/dryer-vent-cleaning">Dryer Vent Cleaning</Link></div></div><div><h2 className="text-sm font-extrabold uppercase tracking-[.14em] text-white">Company</h2><div className="mt-4 grid gap-2 text-sm"><Link className="hover:text-white" href="/service-areas">Service Areas</Link><Link className="hover:text-white" href="/about">About Us</Link><Link className="hover:text-white" href="/contact">Contact</Link></div></div><div className="rounded-2xl border border-white/25 bg-[#061c32]/70 p-5 shadow-xl backdrop-blur-sm"><h2 className="text-sm font-extrabold uppercase tracking-[.14em] text-white">Contact</h2><div className="mt-4 grid gap-3 text-sm"><Link className="font-bold text-white hover:text-sky-200" href="tel:9545908028">954-590-8028</Link><Link className="font-bold text-red-400 hover:text-red-300" href="tel:7543660055">Emergency 24/7: 754-366-0055</Link><a className="hover:text-white" href="mailto:topnotch.acservices@gmail.com">Email: topnotch.acservices@gmail.com</a><a className="hover:text-white" href="https://topnotchdryerventcleaning.com">topnotchdryerventcleaning.com</a></div></div></div><div className="flex flex-col gap-3 pt-6 text-xs text-sky-200 sm:flex-row sm:items-center sm:justify-between"><span>© {new Date().getFullYear()} Top Notch AC Services. All rights reserved.</span><span>Family-Owned & Operated · Faith · Family · Community</span></div></div></footer>;
+  const trustLogos = [
+    { src: "/images/footer/trust/nadca.jpg", alt: "National Air Duct Cleaners Association logo" },
+    { src: "/images/footer/trust/bbb-rating.jpg", alt: "Better Business Bureau rating badge" },
+    { src: "/images/footer/trust/google-reviews.jpg", alt: "Google reviews badge" },
+    { src: "/images/footer/trust/instagram.jpg", alt: "Top Notch AC Services on Instagram" },
+  ];
+  const paymentMethods = [
+    { src: "/images/footer/payments/visa.png", alt: "Visa accepted" },
+    { src: "/images/footer/payments/mastercard.png", alt: "Mastercard accepted" },
+    { src: "/images/footer/payments/discover.png", alt: "Discover accepted" },
+    { src: "/images/footer/payments/cash.png", alt: "Cash accepted" },
+    { src: "/images/footer/payments/check.png", alt: "Check accepted" },
+    { src: "/images/footer/payments/financing.png", alt: "Financing available" },
+  ];
+
+  return <footer className="relative isolate overflow-hidden bg-[#061c32] text-sky-100">
+    <div className="absolute inset-0 -z-20 bg-[url('/images/footer/south-florida-hvac-footer.jpg')] bg-cover bg-center" aria-hidden="true" />
+    <div className="absolute inset-0 -z-10 bg-[#061c32]/85" aria-hidden="true" />
+    <div className="relative mx-auto max-w-7xl px-5 py-14 sm:px-8">
+      <div className="grid gap-10 border-b border-sky-100/25 pb-10 sm:grid-cols-2 lg:grid-cols-[1.25fr_.8fr_.8fr_1.15fr]">
+        <div><Brand light /><p className="mt-5 max-w-sm text-sm leading-6 text-sky-100">Professional AC repair, installation, maintenance, air duct cleaning and dryer vent service throughout South Florida.</p><p className="mt-4 text-xs font-bold tracking-wide text-sky-200">LICENSED & INSURED · FLORIDA HVAC LICENSE {content.license}</p></div>
+        <div><h2 className="text-sm font-extrabold uppercase tracking-[.14em] text-white">Services</h2><div className="mt-4 grid gap-2 text-sm"><Link className="hover:text-white" href="/ac-services">AC Services</Link><Link className="hover:text-white" href="/air-duct-cleaning">Air Duct Cleaning</Link><Link className="hover:text-white" href="/dryer-vent-cleaning">Dryer Vent Cleaning</Link></div></div>
+        <div><h2 className="text-sm font-extrabold uppercase tracking-[.14em] text-white">Company</h2><div className="mt-4 grid gap-2 text-sm"><Link className="hover:text-white" href="/service-areas">Service Areas</Link><Link className="hover:text-white" href="/about">About Us</Link><Link className="hover:text-white" href="/contact">Contact</Link></div></div>
+        <div className="rounded-2xl border border-white/25 bg-[#061c32]/70 p-5 shadow-xl backdrop-blur-sm"><h2 className="text-sm font-extrabold uppercase tracking-[.14em] text-white">Contact</h2><div className="mt-4 grid gap-3 text-sm"><Link className="font-bold text-white hover:text-sky-200" href="tel:9545908028">954-590-8028</Link><Link className="font-bold text-red-400 hover:text-red-300" href="tel:7543660055">Emergency 24/7: 754-366-0055</Link><a className="hover:text-white" href="mailto:topnotch.acservices@gmail.com">Email: topnotch.acservices@gmail.com</a><a className="hover:text-white" href="https://topnotchdryerventcleaning.com">topnotchdryerventcleaning.com</a></div></div>
+      </div>
+      <section className="grid gap-5 border-b border-sky-100/25 py-8 lg:grid-cols-[.8fr_1.2fr]" aria-label="Business hours and payment options">
+        <div className="rounded-2xl border border-white/15 bg-[#061c32]/70 p-5 shadow-xl backdrop-blur-sm">
+          <h2 className="text-sm font-extrabold uppercase tracking-[.14em] text-white">Business hours</h2>
+          <dl className="mt-4 grid gap-2 text-sm text-sky-100"><div className="flex justify-between gap-4"><dt>Monday–Friday</dt><dd className="font-bold text-white">7:30 AM–11:00 PM</dd></div><div className="flex justify-between gap-4"><dt>Saturday–Sunday</dt><dd className="font-bold text-white">8:00 AM–6:00 PM</dd></div></dl>
+          <p className="mt-4 border-t border-white/15 pt-4 text-sm font-extrabold text-red-300">24-hour emergency service available</p>
+        </div>
+        <div className="rounded-2xl border border-white/15 bg-[#061c32]/70 p-5 shadow-xl backdrop-blur-sm">
+          <div className="flex flex-wrap items-baseline justify-between gap-2"><h2 className="text-sm font-extrabold uppercase tracking-[.14em] text-white">Payment options</h2><p className="text-sm font-extrabold text-sky-200">Financing also available</p></div>
+          <div className="mt-4 grid grid-cols-3 gap-2 sm:flex sm:flex-wrap sm:gap-3">{paymentMethods.map((method) => <div key={method.src} className="flex h-14 items-center justify-center rounded-lg bg-white px-2"><Image src={method.src} alt={method.alt} width={100} height={63} className="h-auto max-h-10 w-auto max-w-full object-contain" /></div>)}</div>
+        </div>
+      </section>
+      <section className="border-b border-sky-100/25 py-8" aria-labelledby="footer-trust-heading">
+        <h2 id="footer-trust-heading" className="text-center text-xs font-extrabold uppercase tracking-[.16em] text-sky-200">Trusted &amp; connected</h2>
+        <div className="mx-auto mt-5 grid max-w-5xl grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
+          {trustLogos.map((logo) => <div key={logo.src} className="flex h-24 items-center justify-center rounded-xl border border-white/15 bg-white p-3 shadow-lg sm:h-28 sm:p-4"><Image src={logo.src} alt={logo.alt} width={300} height={160} className="max-h-full w-auto max-w-full object-contain" /></div>)}
+        </div>
+      </section>
+      <div className="flex flex-col gap-3 pt-6 text-xs text-sky-200 sm:flex-row sm:items-center sm:justify-between"><span>© {new Date().getFullYear()} Top Notch AC Services. All rights reserved.</span><span>Family-Owned & Operated · Faith · Family · Community</span></div>
+    </div>
+  </footer>;
 }
 
 export function PageHero({ eyebrow, title, description }: { eyebrow: string; title: string; description: string }) { return <section className="bg-[#082544] py-16 text-white sm:py-22"><div className="mx-auto max-w-7xl px-5 sm:px-8"><p className="text-xs font-extrabold tracking-[.16em] text-sky-200">{eyebrow}</p><h1 className="mt-4 max-w-3xl text-4xl font-black leading-tight sm:text-5xl">{title}</h1><p className="mt-5 max-w-2xl leading-7 text-sky-100">{description}</p></div></section>; }
