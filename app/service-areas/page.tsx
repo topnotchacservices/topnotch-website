@@ -4,19 +4,8 @@ import { ActionButton, PageHero, SiteFooter, SiteHeader } from "@/components/sit
 import { regionOrder } from "@/data/service-areas";
 import { getSiteContent } from "@/lib/content-store";
 
-const areaImages: Record<string, string> = {
-  "pompano-beach": "/images/service-areas/pompano-beach.jpg",
-  "fort-lauderdale": "/images/service-areas/fort-lauderdale.jpg",
-  "deerfield-beach": "/images/service-areas/deerfield-beach.jpg",
-  "coconut-creek": "/images/service-areas/coconut-creek.jpg",
-  "coral-springs": "/images/service-areas/coral-springs.jpg",
-  "boca-raton": "/images/service-areas/boca-raton.jpg",
-  margate: "/images/service-areas/margate.jpg",
-  "oakland-park": "/images/service-areas/oakland-park.jpg",
-};
-
 export default async function ServiceAreasPage() {
-	const content = await getSiteContent();
-	const visibleAreas = content.serviceAreas.filter((area) => area.enabled);
-	return <><SiteHeader /><main><PageHero eyebrow="SERVICE AREAS" title="Local service across Broward and South Florida." description="Top Notch AC Services is ready to help homeowners and businesses with cooling, duct cleaning and dryer vent service throughout the region." /><section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-24">{regionOrder.map((region) => { const areas = visibleAreas.filter((area) => area.region === region); return areas.length ? <section key={region} className="mt-12 first:mt-0"><h2 className="text-2xl font-black text-[#082544]">{region}</h2><div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">{areas.map((area) => <Link key={area.slug} href={`/service-areas/${area.slug}`} className="group relative flex min-h-36 items-center justify-center overflow-hidden rounded-xl border border-sky-100 bg-[#082544] px-4 text-center text-sm font-black text-white shadow-sm transition hover:-translate-y-0.5 hover:border-sky-300 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 active:translate-y-0">{areaImages[area.slug] && <Image src={areaImages[area.slug]} alt={`${area.name} service area`} fill sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw" className="object-cover transition duration-300 group-hover:scale-105" />}<span className="absolute inset-0 bg-[#062c55]/65" /><span className="relative drop-shadow">{area.name}</span></Link>)}</div></section> : null; })}<div className="mt-10"><ActionButton>Book Service</ActionButton></div></section></main><SiteFooter /></>;
+  const content = await getSiteContent();
+  const visibleAreas = content.serviceAreas.filter((area) => area.enabled);
+  return <><SiteHeader /><main><PageHero eyebrow="SERVICE AREAS" title="Local service across Broward and South Florida." description="Top Notch AC Services is ready to help homeowners and businesses with cooling, duct cleaning and dryer vent service throughout the region." /><section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-24">{regionOrder.map((region) => { const areas = visibleAreas.filter((area) => area.region === region); return areas.length ? <section key={region} className="mt-12 first:mt-0"><h2 className="text-2xl font-black text-[#082544]">{region}</h2><div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">{areas.map((area) => <Link key={area.slug} href={`/service-areas/${area.slug}`} className="group relative flex min-h-36 items-center justify-center overflow-hidden rounded-xl border border-sky-100 bg-[#082544] px-4 text-center text-sm font-black text-white shadow-sm transition hover:-translate-y-0.5 hover:border-sky-300 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 active:translate-y-0"><Image src={`/images/service-areas/${area.slug}.jpg`} alt={`${area.name} service area`} fill sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw" className="object-cover transition duration-300 group-hover:scale-105" /><span className="absolute inset-0 bg-[#062c55]/65" /><span className="relative drop-shadow">{area.name}</span></Link>)}</div></section> : null; })}<div className="mt-10"><ActionButton>Book Service</ActionButton></div></section></main><SiteFooter /></>;
 }
