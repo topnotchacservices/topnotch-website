@@ -143,7 +143,7 @@ export default function AirDuctCleaningPage() {
             <div className="mt-9 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {process.map(([number, title, text, image]) => (
                 <article key={number} className="overflow-hidden rounded-2xl border border-white/15 bg-white/8">
-                  <div className="relative h-44"><Image src={image} alt={title} fill sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" className="object-cover" /></div>
+                  <div className="relative h-44"><Image src={image} alt={title} fill sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" className="object-contain object-center p-2" /></div>
                   <div className="p-6"><span className="grid size-11 place-items-center rounded-full bg-sky-400 text-sm font-black text-[#082544]">{number}</span><h3 className="mt-4 text-lg font-black">{title}</h3><p className="mt-2 text-sm leading-6 text-sky-100">{text}</p></div>
                 </article>
               ))}
