@@ -7,10 +7,10 @@ import { useSiteContent } from "@/components/content-provider";
 import { ActionButton, SiteFooter, SiteHeader } from "@/components/site-shell";
 
 const reasons = [
-  ["Dust & debris buildup", "Visible dust around supply vents or debris inside accessible ductwork may be a sign that the system should be inspected."],
-  ["Musty or stale odors", "Persistent odors when the HVAC system runs can be related to buildup, moisture, filters, coils, drain issues, or duct conditions."],
-  ["Recent renovation", "Construction and remodeling can introduce fine dust into the return and supply system if the HVAC equipment is operating during the work."],
-  ["Reduced airflow", "Airflow problems can have several causes, including dirty components, restrictions, duct issues, or equipment problems. We inspect before recommending a solution."],
+  ["Dust & debris buildup", "Visible dust around supply vents or debris inside accessible ductwork may be a sign that the system should be inspected.", "/images/duct/reasons/dust-debris.jpg"],
+  ["Musty or stale odors", "Persistent odors when the HVAC system runs can be related to buildup, moisture, filters, coils, drain issues, or duct conditions.", "/images/duct/reasons/musty-odors.jpg"],
+  ["Recent renovation", "Construction and remodeling can introduce fine dust into the return and supply system if the HVAC equipment is operating during the work.", "/images/duct/reasons/recent-renovation.jpg"],
+  ["Reduced airflow", "Airflow problems can have several causes, including dirty components, restrictions, duct issues, or equipment problems. We inspect before recommending a solution.", "/images/duct/reasons/reduced-airflow.jpg"],
 ];
 
 const process = [
@@ -122,11 +122,10 @@ export default function AirDuctCleaningPage() {
             </p>
           </div>
           <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {reasons.map(([title, text]) => (
-              <article key={title} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <span className="grid size-10 place-items-center rounded-full bg-sky-50 text-lg font-black text-sky-700">+</span>
-                <h3 className="mt-4 text-lg font-black text-[#082544]">{title}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-600">{text}</p>
+            {reasons.map(([title, text, image]) => (
+              <article key={title} className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+                <div className="relative h-44 bg-slate-50"><Image src={image} alt={title} fill sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" className="object-cover" /></div>
+                <div className="p-6"><span className="grid size-10 place-items-center rounded-full bg-sky-50 text-lg font-black text-sky-700">+</span><h3 className="mt-4 text-lg font-black text-[#082544]">{title}</h3><p className="mt-2 text-sm leading-6 text-slate-600">{text}</p></div>
               </article>
             ))}
           </div>
