@@ -23,8 +23,6 @@ const requiredEnvironment = [
   "RESEND_API_KEY",
   "LEAD_NOTIFICATION_FROM",
   "LEAD_NOTIFICATION_TO",
-  "UPSTASH_REDIS_REST_URL",
-  "UPSTASH_REDIS_REST_TOKEN",
   "TURNSTILE_SECRET_KEY",
 ];
 
@@ -120,34 +118,41 @@ export async function POST(request: Request) {
       { status: 400 },
     );
   const ip = clientIp(request);
-  const limiter = new Ratelimit({
-    redis: new Redis({
-      url: process.env.UPSTASH_REDIS_REST_URL!,
-      token: process.env.UPSTASH_REDIS_REST_TOKEN!,
-    }),
-    limiter: Ratelimit.slidingWindow(5, "10 m"),
-    analytics: true,
-    prefix: "contact",
-  });
-  const limit = await limiter.limit(ip);
-  if (!limit.success)
-    return NextResponse.json(
-      {
-        error:
-          "Too many requests. Please wait a few minutes or call us directly.",
-      },
-      {
-        status: 429,
-        headers: {
-          "Retry-After": String(Math.ceil((limit.reset - Date.now()) / 1000)),
-        },
-      },
-    );
   if (!(await verifyTurnstile(contact.turnstileToken, ip)))
     return NextResponse.json(
       { error: "Security verification failed. Please try again." },
       { status: 400 },
     );
+  try {
+    const limiter = new Ratelimit({
+      redis: new Redis({
+        url: process.env.UPSTASH_REDIS_REST_URL!,
+        token: process.env.UPSTASH_REDIS_REST_TOKEN!,
+      }),
+      limiter: Ratelimit.slidingWindow(5, "10 m"),
+      analytics: true,
+      prefix: "contact",
+    });
+    const limit = await limiter.limit(ip);
+    if (!limit.success)
+      return NextResponse.json(
+        {
+          error:
+            "Too many requests. Please wait a few minutes or call us directly.",
+        },
+        {
+          status: 429,
+          headers: {
+            "Retry-After": String(Math.ceil((limit.reset - Date.now()) / 1000)),
+          },
+        },
+      );
+  } catch (error) {
+    console.warn(
+      "Upstash rate limiting is unavailable; accepting a Turnstile-verified contact request.",
+      { message: error instanceof Error ? error.message : "Unknown error" },
+    );
+  }
   const supabase = createClient(
     process.env.SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_ROLE_KEY!,
