@@ -54,7 +54,7 @@ function HeroImage() {
           priority
           sizes="(min-width: 1024px) 52vw, 100vw"
           onError={() => setFailed(true)}
-          className="object-cover object-center"
+          className="object-contain object-center"
         />
       ) : (
         <div className="absolute inset-0 flex items-center justify-center p-10 text-center text-white">
