@@ -1,8 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import Script from "next/script";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { useSiteContent } from "@/components/content-provider";
+import { trackContactFormSuccess } from "@/components/google-ads-tracking";
 import { ActionButton, SiteFooter, SiteHeader } from "@/components/site-shell";
 
 const serviceOptions = [
@@ -46,6 +48,7 @@ declare global {
           sitekey: string;
           callback: (token: string) => void;
           "expired-callback": () => void;
+          "error-callback": () => void;
         },
       ) => string;
       reset: (widgetId?: string) => void;
@@ -56,7 +59,9 @@ declare global {
 
 export default function ContactPage() {
   const content = useSiteContent();
+  const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
   const [form, setForm] = useState(emptyForm);
+  const [availability, setAvailability] = useState<"checking" | "available" | "unavailable">(turnstileSiteKey ? "checking" : "unavailable");
   const [status, setStatus] = useState<{
     type: "success" | "error";
     text: string;
@@ -65,13 +70,26 @@ export default function ContactPage() {
   const [turnstileLoaded, setTurnstileLoaded] = useState(false);
   const turnstileContainer = useRef<HTMLDivElement>(null);
   const turnstileWidgetId = useRef<string | undefined>(undefined);
-  const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
   const update = <K extends keyof typeof emptyForm>(
     key: K,
     value: (typeof emptyForm)[K],
   ) => setForm((current) => ({ ...current, [key]: value }));
   useEffect(() => {
+    if (!turnstileSiteKey) return;
+    const controller = new AbortController();
+    fetch("/api/contact", { cache: "no-store", signal: controller.signal })
+      .then(async (response) => {
+        const result = await response.json().catch(() => null);
+        if (!controller.signal.aborted) setAvailability(response.ok && result?.available === true ? "available" : "unavailable");
+      })
+      .catch(() => {
+        if (!controller.signal.aborted) setAvailability("unavailable");
+      });
+    return () => controller.abort();
+  }, [turnstileSiteKey]);
+  useEffect(() => {
     if (
+      availability !== "available" ||
       !turnstileLoaded ||
       !turnstileSiteKey ||
       !turnstileContainer.current ||
@@ -86,13 +104,17 @@ export default function ContactPage() {
           setForm((current) => ({ ...current, turnstileToken })),
         "expired-callback": () =>
           setForm((current) => ({ ...current, turnstileToken: "" })),
+        "error-callback": () => {
+          setForm((current) => ({ ...current, turnstileToken: "" }));
+          setAvailability("unavailable");
+        },
       },
     );
     return () => {
       if (turnstileWidgetId.current)
         window.turnstile?.remove(turnstileWidgetId.current);
     };
-  }, [turnstileLoaded, turnstileSiteKey]);
+  }, [availability, turnstileLoaded, turnstileSiteKey]);
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setStatus(null);
@@ -118,11 +140,12 @@ export default function ContactPage() {
         body: JSON.stringify(form),
       });
       const result = await response.json().catch(() => null);
-      if (!response.ok)
+      if (!response.ok || result?.ok !== true)
         throw new Error(
           result?.error ??
             "We could not send your request. Please call us directly for immediate help.",
         );
+      trackContactFormSuccess();
       setForm(emptyForm);
       window.turnstile?.reset(turnstileWidgetId.current);
       setStatus({
@@ -189,7 +212,7 @@ export default function ContactPage() {
                 and businesses across Pompano Beach and South Florida.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <ActionButton>Book Service</ActionButton>
+                <ActionButton href="#request-service">Book Service</ActionButton>
                 <ActionButton phone className="bg-[#082544] hover:bg-[#061c32]">
                   Call Now {content.phone}
                 </ActionButton>
@@ -267,7 +290,7 @@ export default function ContactPage() {
               </a>
             </div>
           </aside>
-          <section className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm sm:p-8">
+          <section id="request-service" className="scroll-mt-24 rounded-xl border border-slate-200 bg-white p-5 shadow-sm sm:p-8">
             <p className="text-xs font-black tracking-[.14em] text-sky-700">
               REQUEST SERVICE
             </p>
@@ -278,6 +301,7 @@ export default function ContactPage() {
               Share a few details and our team will follow up about your service
               request.
             </p>
+            {availability === "available" ? (
             <form className="mt-7 grid gap-4 sm:grid-cols-2" onSubmit={submit}>
               <label className="text-sm font-bold text-[#082544]">
                 First Name <span className="text-red-600" aria-hidden="true">*</span>
@@ -405,17 +429,13 @@ export default function ContactPage() {
                   onChange={(event) => update("consent", event.target.checked)}
                   className="mt-1 size-4 shrink-0 accent-sky-600"
                 />
-                I agree to be contacted by Top Notch AC Services about my
-                request.
+                I agree to be contacted by {content.companyName} about my request.
               </label>
+              <p className="text-sm leading-6 text-slate-600 sm:col-span-2">
+                Read our <Link href="/privacy" className="font-bold text-sky-700 underline">Privacy Notice</Link> for details about how we handle your request.
+              </p>
               <div className="sm:col-span-2">
-                {turnstileSiteKey ? (
-                  <div ref={turnstileContainer} aria-label="Security verification" />
-                ) : (
-                  <p className="rounded-lg bg-amber-50 p-3 text-sm font-semibold text-amber-900">
-                    Online requests are temporarily unavailable. Please call us directly.
-                  </p>
-                )}
+                <div ref={turnstileContainer} aria-label="Security verification" />
               </div>
               {status && (
                 <p
@@ -432,6 +452,12 @@ export default function ContactPage() {
                 {submitting ? "Sending request..." : "Send Service Request"}
               </button>
             </form>
+            ) : (
+              <div role="status" className="mt-7 rounded-lg bg-amber-50 p-5 text-sm font-semibold text-amber-900">
+                {availability === "checking" ? "Checking online request availability..." : "Online requests are temporarily unavailable. Please call us directly."}
+                {availability === "unavailable" && <div className="mt-4"><ActionButton phone>Call Now {content.phone}</ActionButton></div>}
+              </div>
+            )}
           </section>
         </section>
         <section className="bg-sky-50 py-14 sm:py-20">
