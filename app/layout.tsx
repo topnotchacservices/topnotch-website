@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ContentProvider } from "@/components/content-provider";
+import { MobileServiceBar } from "@/components/mobile-service-bar";
 import { GoogleAdsTracking } from "@/components/google-ads-tracking";
 import { getSiteContent } from "@/lib/content-store";
 import "./globals.css";
@@ -31,7 +32,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col"><ContentProvider content={content}>{children}</ContentProvider><GoogleAdsTracking /></body>
+      <body className="min-h-full flex flex-col"><ContentProvider content={content}>{children}<MobileServiceBar /></ContentProvider><GoogleAdsTracking /></body>
     </html>
   );
 }
