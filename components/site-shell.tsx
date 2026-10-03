@@ -2,13 +2,17 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { serviceRequestHref } from "@/lib/service-request";
 import { useState } from "react";
 import { navigation } from "@/data/site-content";
 import { useSiteContent } from "@/components/content-provider";
 
-export function ActionButton({ children, href = "/book-service", phone = false, light = false, className = "" }: { children: React.ReactNode; href?: string; phone?: boolean; light?: boolean; className?: string }) {
+export function ActionButton({ children, href, phone = false, light = false, className = "" }: { children: React.ReactNode; href?: string; phone?: boolean; light?: boolean; className?: string }) {
   const content = useSiteContent();
-  return <Link href={phone ? `tel:${content.phone.replace(/\D/g, "")}` : href} className={`inline-flex min-h-11 items-center justify-center rounded-full px-5 text-sm font-extrabold transition duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 active:scale-[.98] ${light ? "bg-white text-[#082544] hover:bg-sky-100" : "bg-sky-500 text-white hover:bg-sky-600"} ${className}`}>{children}</Link>;
+  const pathname = usePathname();
+  const destination = href ?? serviceRequestHref(pathname);
+  return <Link href={phone ? `tel:${content.phone.replace(/\D/g, "")}` : destination} className={`inline-flex min-h-11 items-center justify-center rounded-full px-5 text-sm font-extrabold transition duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 active:scale-[.98] ${light ? "bg-white text-[#082544] hover:bg-sky-100" : "bg-sky-500 text-white hover:bg-sky-600"} ${className}`}>{children}</Link>;
 }
 
 function Brand({ light = false }: { light?: boolean }) {
